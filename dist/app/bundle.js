@@ -97,11 +97,6 @@
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Text'
-	        ),
-	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
 	          _react2.default.createElement(
@@ -22563,8 +22558,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Header = exports.Header = function (_React$component) {
-	  _inherits(Header, _React$component);
+	var Header = exports.Header = function (_React$Component) {
+	  _inherits(Header, _React$Component);
 	
 	  function Header() {
 	    _classCallCheck(this, Header);
@@ -22604,7 +22599,7 @@
 	  }]);
 	
 	  return Header;
-	}(_react2.default.component);
+	}(_react2.default.Component);
 
 /***/ }),
 /* 185 */
@@ -22613,7 +22608,7 @@
   \************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -22634,8 +22629,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Home = exports.Home = function (_React$component) {
-	  _inherits(Home, _React$component);
+	var Home = exports.Home = function (_React$Component) {
+	  _inherits(Home, _React$Component);
 	
 	  function Home() {
 	    _classCallCheck(this, Home);
@@ -22644,22 +22639,31 @@
 	  }
 	
 	  _createClass(Home, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
+	      var helloCheck = "";
+	      if (true) {
+	        helloCheck = _react2.default.createElement(
+	          "p",
+	          null,
+	          "Hello check"
+	        );
+	      }
 	      return _react2.default.createElement(
-	        'div',
+	        "div",
 	        null,
 	        _react2.default.createElement(
-	          'p',
+	          "p",
 	          null,
-	          'In a new component'
-	        )
+	          "In a new component"
+	        ),
+	        helloCheck
 	      );
 	    }
 	  }]);
 	
 	  return Home;
-	}(_react2.default.component);
+	}(_react2.default.Component);
 
 /***/ })
 /******/ ]);
