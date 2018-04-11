@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "\\app\\";
+/******/ 	__webpack_require__.p = "/app/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -45,10 +45,12 @@
 /*!**************************!*\
   !*** ./src/app/index.js ***!
   \**************************/
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
-	console.log("it works")
+	"use strict";
+	
+	console.log("It works!");
 
-/***/ }
+/***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map
