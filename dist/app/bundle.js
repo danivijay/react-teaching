@@ -84,6 +84,7 @@
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
+	      var name = "dani";
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container' },
@@ -102,7 +103,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-10 col-xs-offset=1' },
-	            _react2.default.createElement(_Home.Home, null)
+	            _react2.default.createElement(_Home.Home, { name: name })
 	          )
 	        )
 	      );
@@ -22642,6 +22643,7 @@
 	    key: "render",
 	    value: function render() {
 	      var helloCheck = "";
+	      console.log(this.props);
 	      if (true) {
 	        helloCheck = _react2.default.createElement(
 	          "p",
@@ -22657,7 +22659,8 @@
 	          null,
 	          "In a new component"
 	        ),
-	        helloCheck
+	        helloCheck,
+	        this.props.name
 	      );
 	    }
 	  }]);

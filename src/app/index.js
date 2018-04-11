@@ -8,6 +8,7 @@ import { Home } from './components/Home'
 class App extends React.Component {
   render() {
     let name = "dani"
+    let arr = ["ab", "bc"]
     return (
       <div className="container">
         <div className="row">
@@ -17,7 +18,9 @@ class App extends React.Component {
         </div>
         <div className="row">
           <div className="col-xs-10 col-xs-offset=1">
-            <Home name={name} />
+            <Home name={name} arr={arr}>
+              <p>This is a para</p>
+            </Home>
           </div>
         </div>
       </div>

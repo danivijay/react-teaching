@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 export class Home extends React.Component {
   render() {
@@ -12,7 +13,17 @@ export class Home extends React.Component {
         <p>In a new component</p>
         { helloCheck }
         { this.props.name }
+        <ul>
+          { this.props.arr.map((val, i) => <li key={i}>{val}</li>) }
+        </ul>
+        { this.props.children }
       </div>
     )
   }
+}
+
+Home.PropTypes = {
+  name: PropTypes.string,
+  arr: PropTypes.array,
+  children: PropTypes.element.isRequired
 }
