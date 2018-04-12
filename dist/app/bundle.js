@@ -85,6 +85,7 @@
 	    key: 'render',
 	    value: function render() {
 	      var name = "dani";
+	      var arr = ["ab", "bc"];
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container' },
@@ -103,7 +104,15 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-10 col-xs-offset=1' },
-	            _react2.default.createElement(_Home.Home, { name: name })
+	            _react2.default.createElement(
+	              _Home.Home,
+	              { name: name, age: 20 },
+	              _react2.default.createElement(
+	                'p',
+	                null,
+	                'This is a para'
+	              )
+	            )
 	          )
 	        )
 	      );
@@ -22609,7 +22618,7 @@
   \************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -22622,6 +22631,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _propTypes = __webpack_require__(/*! prop-types */ 186);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22633,40 +22646,156 @@
 	var Home = exports.Home = function (_React$Component) {
 	  _inherits(Home, _React$Component);
 	
-	  function Home() {
+	  function Home(props) {
 	    _classCallCheck(this, Home);
 	
-	    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+	
+	    _this.age = props.age;
+	    return _this;
 	  }
 	
 	  _createClass(Home, [{
-	    key: "render",
+	    key: 'onMakeOlder',
+	    value: function onMakeOlder() {
+	      this.age++;
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
-	      var helloCheck = "";
-	      console.log(this.props);
-	      if (true) {
-	        helloCheck = _react2.default.createElement(
-	          "p",
-	          null,
-	          "Hello check"
-	        );
-	      }
 	      return _react2.default.createElement(
-	        "div",
+	        'div',
 	        null,
 	        _react2.default.createElement(
-	          "p",
+	          'p',
 	          null,
-	          "In a new component"
+	          'In a new component'
 	        ),
-	        helloCheck,
-	        this.props.name
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          '  ',
+	          this.props.name,
+	          ' : ',
+	          this.props.age,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'btn btn-primary', onClick: this.onMakeOlder },
+	          'Older'
+	        )
 	      );
 	    }
 	  }]);
 	
 	  return Home;
 	}(_react2.default.Component);
+
+/***/ }),
+/* 186 */
+/*!*******************************!*\
+  !*** ./~/prop-types/index.js ***!
+  \*******************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 *
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
+	 */
+	
+	if (process.env.NODE_ENV !== 'production') {
+	  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+	    Symbol.for &&
+	    Symbol.for('react.element')) ||
+	    0xeac7;
+	
+	  var isValidElement = function(object) {
+	    return typeof object === 'object' &&
+	      object !== null &&
+	      object.$$typeof === REACT_ELEMENT_TYPE;
+	  };
+	
+	  // By explicitly using `prop-types` you are opting into new development behavior.
+	  // http://fb.me/prop-types-in-prod
+	  var throwOnDirectAccess = true;
+	  module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ 30)(isValidElement, throwOnDirectAccess);
+	} else {
+	  // By explicitly using `prop-types` you are opting into new production behavior.
+	  // http://fb.me/prop-types-in-prod
+	  module.exports = __webpack_require__(/*! ./factoryWithThrowingShims */ 187)();
+	}
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 3)))
+
+/***/ }),
+/* 187 */
+/*!**************************************************!*\
+  !*** ./~/prop-types/factoryWithThrowingShims.js ***!
+  \**************************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 *
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
+	 */
+	
+	'use strict';
+	
+	var emptyFunction = __webpack_require__(/*! fbjs/lib/emptyFunction */ 9);
+	var invariant = __webpack_require__(/*! fbjs/lib/invariant */ 12);
+	var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ 31);
+	
+	module.exports = function() {
+	  function shim(props, propName, componentName, location, propFullName, secret) {
+	    if (secret === ReactPropTypesSecret) {
+	      // It is still safe when called from React.
+	      return;
+	    }
+	    invariant(
+	      false,
+	      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+	      'Use PropTypes.checkPropTypes() to call them. ' +
+	      'Read more at http://fb.me/use-check-prop-types'
+	    );
+	  };
+	  shim.isRequired = shim;
+	  function getShim() {
+	    return shim;
+	  };
+	  // Important!
+	  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+	  var ReactPropTypes = {
+	    array: shim,
+	    bool: shim,
+	    func: shim,
+	    number: shim,
+	    object: shim,
+	    string: shim,
+	    symbol: shim,
+	
+	    any: shim,
+	    arrayOf: getShim,
+	    element: shim,
+	    instanceOf: getShim,
+	    node: shim,
+	    objectOf: getShim,
+	    oneOf: getShim,
+	    oneOfType: getShim,
+	    shape: getShim,
+	    exact: getShim
+	  };
+	
+	  ReactPropTypes.checkPropTypes = emptyFunction;
+	  ReactPropTypes.PropTypes = ReactPropTypes;
+	
+	  return ReactPropTypes;
+	};
+
 
 /***/ })
 /******/ ]);
