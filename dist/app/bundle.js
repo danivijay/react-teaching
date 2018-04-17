@@ -106,7 +106,7 @@
 	            { className: 'col-xs-10 col-xs-offset=1' },
 	            _react2.default.createElement(
 	              _Home.Home,
-	              { name: name, age: 20 },
+	              { name: name, initialAge: 20 },
 	              _react2.default.createElement(
 	                'p',
 	                null,
@@ -22651,14 +22651,19 @@
 	
 	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
 	
-	    _this.age = props.age;
+	    _this.state = {
+	      age: props.initialAge,
+	      status: 0
+	    };
 	    return _this;
 	  }
 	
 	  _createClass(Home, [{
 	    key: 'onMakeOlder',
 	    value: function onMakeOlder() {
-	      this.age++;
+	      this.setState({
+	        age: this.state.age + 1
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -22677,12 +22682,12 @@
 	          '  ',
 	          this.props.name,
 	          ' : ',
-	          this.props.age,
+	          this.state.age,
 	          ' '
 	        ),
 	        _react2.default.createElement(
 	          'button',
-	          { className: 'btn btn-primary', onClick: this.onMakeOlder },
+	          { className: 'btn btn-primary', onClick: this.onMakeOlder.bind(this) },
 	          'Older'
 	        )
 	      );
