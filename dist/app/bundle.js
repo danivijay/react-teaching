@@ -82,6 +82,11 @@
 	  }
 	
 	  _createClass(App, [{
+	    key: 'onGreet',
+	    value: function onGreet() {
+	      alert('hello');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var name = "dani";
@@ -95,7 +100,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-10 col-xs-offset=1' },
-	            _react2.default.createElement(_Header.Header, null)
+	            _react2.default.createElement(_Header.Header, { homeLink: 'Home' })
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -106,7 +111,7 @@
 	            { className: 'col-xs-10 col-xs-offset=1' },
 	            _react2.default.createElement(
 	              _Home.Home,
-	              { name: name, initialAge: 20 },
+	              { name: name, initialAge: 20, greet: this.onGreet },
 	              _react2.default.createElement(
 	                'p',
 	                null,
@@ -22554,62 +22559,39 @@
 	});
 	exports.Header = undefined;
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Header = exports.Header = function (_React$Component) {
-	  _inherits(Header, _React$Component);
-	
-	  function Header() {
-	    _classCallCheck(this, Header);
-	
-	    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
-	  }
-	
-	  _createClass(Header, [{
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement(
-	        "nav",
-	        { className: "navbar navbar-default" },
+	var Header = exports.Header = function Header(props) {
+	  return _react2.default.createElement(
+	    "nav",
+	    { className: "navbar navbar-default" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "container" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "navbar-header" },
 	        _react2.default.createElement(
-	          "div",
-	          { className: "container" },
+	          "ul",
+	          { className: "nav navbar-nav" },
 	          _react2.default.createElement(
-	            "div",
-	            { className: "navbar-header" },
+	            "li",
+	            null,
 	            _react2.default.createElement(
-	              "ul",
-	              { className: "nav navbar-nav" },
-	              _react2.default.createElement(
-	                "li",
-	                null,
-	                _react2.default.createElement(
-	                  "a",
-	                  { href: "#" },
-	                  "Home"
-	                )
-	              )
+	              "a",
+	              { href: "#" },
+	              props.homeLink
 	            )
 	          )
 	        )
-	      );
-	    }
-	  }]);
-	
-	  return Header;
-	}(_react2.default.Component);
+	      )
+	    )
+	  );
+	};
 
 /***/ }),
 /* 185 */
@@ -22688,6 +22670,11 @@
 	        _react2.default.createElement(
 	          'button',
 	          { className: 'btn btn-primary', onClick: this.onMakeOlder.bind(this) },
+	          'Older'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'btn btn-danger', onClick: this.props.greet },
 	          'Older'
 	        )
 	      );
