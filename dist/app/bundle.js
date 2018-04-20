@@ -78,13 +78,25 @@
 	  function App() {
 	    _classCallCheck(this, App);
 	
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+	
+	    _this.state = {
+	      homeLink: "Home"
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(App, [{
 	    key: 'onGreet',
 	    value: function onGreet() {
 	      alert('hello');
+	    }
+	  }, {
+	    key: 'onChangeLinkName',
+	    value: function onChangeLinkName(newName) {
+	      this.setState({
+	        homeLink: newName
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -100,7 +112,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-10 col-xs-offset=1' },
-	            _react2.default.createElement(_Header.Header, { homeLink: 'Home' })
+	            _react2.default.createElement(_Header.Header, { homeLink: this.state.homeLink })
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -111,7 +123,12 @@
 	            { className: 'col-xs-10 col-xs-offset=1' },
 	            _react2.default.createElement(
 	              _Home.Home,
-	              { name: name, initialAge: 20, greet: this.onGreet },
+	              {
+	                name: name,
+	                initialAge: 20,
+	                greet: this.onGreet,
+	                changeLink: this.onChangeLinkName.bind(this),
+	                initialLinkName: this.state.homeLink },
 	              _react2.default.createElement(
 	                'p',
 	                null,
@@ -22635,7 +22652,8 @@
 	
 	    _this.state = {
 	      age: props.initialAge,
-	      status: 0
+	      status: 0,
+	      homeLink: "changed link"
 	    };
 	    return _this;
 	  }
@@ -22646,6 +22664,11 @@
 	      this.setState({
 	        age: this.state.age + 1
 	      });
+	    }
+	  }, {
+	    key: 'onChangeLink',
+	    value: function onChangeLink() {
+	      this.props.changeLink(this.state.homeLink);
 	    }
 	  }, {
 	    key: 'render',
@@ -22678,6 +22701,13 @@
 	          'button',
 	          { className: 'btn btn-danger', onClick: this.props.greet },
 	          'Call root'
+	        ),
+	        _react2.default.createElement('hr', null),
+	        _react2.default.createElement('input', { type: 'text', value: this.props.initialLinkName }),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'btn btn-success', onClick: this.onChangeLink.bind(this) },
+	          'Change header'
 	        )
 	      );
 	    }
