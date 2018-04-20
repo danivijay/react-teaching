@@ -22667,15 +22667,17 @@
 	          this.state.age,
 	          ' '
 	        ),
+	        _react2.default.createElement('hr', null),
 	        _react2.default.createElement(
 	          'button',
 	          { className: 'btn btn-primary', onClick: this.onMakeOlder.bind(this) },
 	          'Older'
 	        ),
+	        _react2.default.createElement('hr', null),
 	        _react2.default.createElement(
 	          'button',
 	          { className: 'btn btn-danger', onClick: this.props.greet },
-	          'Older'
+	          'Call root'
 	        )
 	      );
 	    }
